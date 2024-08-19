@@ -44,41 +44,70 @@ console.log(createCounter());
 
 function expect(val) {
   return {
-      toBe: function(expected) {
-          if (val === expected) {
-              return true;
-          } else {
-              throw new Error("Not Equal");
-          }
-      },
-      notToBe: function(unexpected) {
-          if (val !== unexpected) {
-              return true;
-          } else {
-              throw new Error("Equal");
-          }
+    toBe: function (expected) {
+      if (val === expected) {
+        return true;
+      } else {
+        throw new Error("Not Equal");
       }
+    },
+    notToBe: function (unexpected) {
+      if (val !== unexpected) {
+        return true;
+      } else {
+        throw new Error("Equal");
+      }
+    },
   };
 }
 
 function runFunction(func) {
   try {
-      const value = func();
-      return { value: value };
+    const value = func();
+    return { value: value };
   } catch (error) {
-      return { error: error.message };
+    return { error: error.message };
   }
 }
 
-
 let func1 = () => expect(5).toBe(5);
-console.log(runFunction(func1)); 
-
+console.log(runFunction(func1));
 
 let func2 = () => expect(5).toBe(null);
-console.log(runFunction(func2)); 
-
+console.log(runFunction(func2));
 
 let func3 = () => expect(5).notToBe(null);
-console.log(runFunction(func3)); 
+console.log(runFunction(func3));
 
+// Escreva uma função  createCounter. Ela deve aceitar um inteiro inicial  init.
+//Ela deve retornar um objeto com três funções.
+
+// As três funções são:
+
+// increment() aumenta o valor atual em 1 e depois o retorna.
+// decrement() reduz o valor atual em 1 e depois o retorna.
+// reset() define o valor atual  init e então o retorna.
+
+function createCounter1(n) {
+  let init = n;
+
+  return {
+    increment: function () {
+      return init += 1;
+    },
+    decrement: function () {
+      return init -= 1;
+    },
+    reset: function () {
+      return init = n;
+    },
+  };
+}
+
+let counter1 = createCounter1(0);
+
+console.log(counter1.increment())
+console.log(counter1.increment())
+console.log(counter1.decrement())
+console.log(counter1.reset())
+console.log(counter1.reset())
