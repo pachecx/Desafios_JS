@@ -93,21 +93,37 @@ function createCounter1(n) {
 
   return {
     increment: function () {
-      return init += 1;
+      return (init += 1);
     },
     decrement: function () {
-      return init -= 1;
+      return (init -= 1);
     },
     reset: function () {
-      return init = n;
+      return (init = n);
     },
   };
 }
 
 let counter1 = createCounter1(0);
 
-console.log(counter1.increment())
-console.log(counter1.increment())
-console.log(counter1.decrement())
-console.log(counter1.reset())
-console.log(counter1.reset())
+console.log(counter1.increment());
+console.log(counter1.increment());
+console.log(counter1.decrement());
+console.log(counter1.reset());
+console.log(counter1.reset());
+
+// Dado um array de inteiros  arr e uma função de mapeamento  fn,
+// retorne um novo array com uma transformação aplicada a cada elemento.
+
+// O array retornado deve ser criado de forma que  returnedArray[i] = fn(arr[i], i).
+// Por favor, resolva sem o método integrado Array.map.
+
+console.log("------------------------");
+
+//Escreva uma função  argumentsLengthque retorne a contagem de argumentos passados ​​a ela.
+
+function argumentsLength() {
+  return arguments.length;
+}
+
+console.log(argumentsLength(5,4,6,6))
